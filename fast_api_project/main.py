@@ -22,4 +22,13 @@ def get_product_by_id(id:int):
     for p in products:
         if p.id == id:
             return p
-    return "There is No Product found" 
+    return f"There is no product found with id {id}" 
+
+@app.get("/user")
+def get_user(user_id:int = None,name: str = "Guest", age: int = 0):
+    return {"user_id": user_id, "name": name, "age": age}
+
+@app.get("/search_product")
+def search_product(id:int = 0, title: str = None, price: int = 0):
+    return {"id": id, "title": title, "price": price}
+
