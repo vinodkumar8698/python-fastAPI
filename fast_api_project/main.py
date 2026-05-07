@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from models import Product
+from models import Product, User
 app = FastAPI()
 
 @app.get("/")
@@ -31,4 +31,14 @@ def get_user(user_id:int = None,name: str = "Guest", age: int = 0):
 @app.get("/search_product")
 def search_product(id:int = 0, title: str = None, price: int = 0):
     return {"id": id, "title": title, "price": price}
+
+# post method
+
+@app.post("/user")
+def create_user(user:User):
+    return {
+        "message": "User created successfully",
+        "status": "success",
+        "data": user
+    }
 
